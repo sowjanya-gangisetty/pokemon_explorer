@@ -94,3 +94,39 @@ footer {
   color: #1e3c72;
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .navbar h1 {
+    font-size: 1.4rem;
+  }
+}
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    padding: 10px;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar h1 {
+    font-size: 1.2rem;
+  }
+  footer {
+    padding: 15px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+  }
+}
