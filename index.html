@@ -28,7 +28,7 @@
           <input type="text" id="pokemonInput" placeholder="Enter Pokémon name or ID (e.g., pikachu, 25)" autocomplete="off"/>
           <div class="search-btn-group">
             <button id="searchBtn">Search</button>
-            <button id="randomBtn">Random Pokémon</button>
+            <button id="randomBtn" onclick="getRandomPokemon()">Random Pokémon</button>
           </div>
         </div>
         <ul id="suggestions"></ul>
@@ -44,7 +44,11 @@
       </div>
 
       <!-- Pokemon Display -->
-      <div id="pokemon-display" class="pokemon-container hidden"></div>
+        
+      <div id="pokemon-display" class="pokemon-container hidden">
+        <h2 id="pokemon-name"></h2>
+        <img id="pokemon-image" alt="Pokemon" />
+      </div>
 
       <!-- Evolution Chain -->
       <div id="evolution-display" class="evolution-section hidden"></div>
