@@ -256,6 +256,8 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
   margin-bottom: 40px;
+  background-color: whitesmoke;
+  border-radius: 20px;
 }
 
 /* Pokemon Card */
@@ -273,6 +275,7 @@ main {
   padding: 30px;
   border-radius: 20px;
   margin-bottom: 20px;
+  
 }
 
 .pokemon-image {
@@ -287,6 +290,9 @@ main {
   color: white;
   margin-top: 15px;
   text-transform: capitalize;
+  display: flex;
+  align-self: center;
+  justify-content: center
 }
 
 .pokemon-id {
