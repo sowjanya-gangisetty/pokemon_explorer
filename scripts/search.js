@@ -40,13 +40,11 @@ function handleAutocomplete() {
   const input = pokemonInput.value.toLowerCase().trim();
   suggestions.innerHTML = "";
 
-  // Only show suggestions for 2+ characters
   if (!input || input.length < 2) {
     suggestions.classList.remove("show");
     return;
   }
 
-  // Find matches (up to 8 results)
   const matches = allPokemonList
     .filter((p) => p.name.startsWith(input))
     .slice(0, 8);
@@ -69,4 +67,51 @@ function handleAutocomplete() {
   });
 
   suggestions.classList.add("show");
+}
+
+// SEARCH FUNCTIONALITY
+
+async function handleSearch() {
+  const query = pokemonInput.value.trim().toLowerCase();
+
+  if (!query) {
+    showError("Please enter a Pokémon name or ID");
+    return;
+  }
+
+  suggestions.classList.remove("show");
+  hideError();
+  showLoading(true);
+
+  pokemonDisplay.innerHTML = "";
+  pokemonDisplay.classList.add("hidden");
+
+  if (typeof hideEvolutionDisplay === "function") {
+    hideEvolutionDisplay();
+  }
+
+  try {
+    const pokemonData = await fetchPokemon(query);
+    const speciesData = await fetchPokemonSpecies(pokemonData.species.url);
+
+    displayPokemon(pokemonData, speciesData);
+    pokemonDisplay.classList.remove("hidden");
+
+    if (
+      typeof handleEvolutionChain === "function" &&
+      speciesData.evolution_chain
+    ) {
+      handleEvolutionChain(speciesData.evolution_chain.url);
+    }
+  } catch (error) {
+    showError(error.message);
+  } finally {
+    showLoading(false);
+  }
+}
+
+async function handleRandomPokemon() {
+  const randomId = Math.floor(Math.random() * 898) + 1;
+  pokemonInput.value = randomId.toString();
+  handleSearch();
 }
