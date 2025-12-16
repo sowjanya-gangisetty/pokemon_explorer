@@ -2,10 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title> Pokémon Explorer </title>
-    <link rel="stylesheet" href="./styles/style.css"/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Pokémon Explorer</title>
+    <link rel="stylesheet" href="./styles/style.css" />
     <script src="./scripts/pokemon.js" defer></script>
+    <script src="./scripts/search.js" defer></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -14,7 +18,9 @@
       <ul class="nav-links">
         <li><a href="#search-section"> Search </a></li>
         <li>
-          <a href="#favorites-section" onclick="scrollToFavorites()"> Favorites </a>
+          <a href="#favorites-section" onclick="scrollToFavorites()">
+            Favorites
+          </a>
         </li>
       </ul>
     </nav>
@@ -25,7 +31,12 @@
       <section id="search-section" class="search-section">
         <h2>Discover Pokémon</h2>
         <div class="search-form">
-          <input type="text" id="pokemonInput" placeholder="Enter Pokémon name or ID (e.g., pikachu, 25)" autocomplete="off"/>
+          <input
+            type="text"
+            id="pokemonInput"
+            placeholder="Enter Pokémon name or ID (e.g., pikachu, 25)"
+            autocomplete="off"
+          />
           <div class="search-btn-group">
             <button id="searchBtn">Search</button>
             <button id="randomBtn" onclick="getRandomPokemon()">Random Pokémon</button>
@@ -65,7 +76,9 @@
       <div class="footer-content">
         <p>&copy; 2025 Pokémon Explorer | Data from PokéAPI</p>
         <div class="footer-links">
-          <a href="https://pokeapi.co/" target="_blank">PokéAPI Documentation</a>
+          <a href="https://pokeapi.co/" target="_blank"
+            >PokéAPI Documentation</a
+          >
           <a href="#search-section">Back to Top</a>
           <a href="https://github.com" target="_blank">GitHub Repository</a>
         </div>
