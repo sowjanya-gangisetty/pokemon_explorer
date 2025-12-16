@@ -115,3 +115,161 @@ async function handleRandomPokemon() {
   pokemonInput.value = randomId.toString();
   handleSearch();
 }
+
+// API FETCH FUNCTIONS
+
+async function fetchPokemon(nameOrId) {
+  const response = await fetch(`${BASE_URL}/pokemon/${nameOrId}`);
+
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error("Pokémon not found. Please check the name or ID.");
+    }
+    throw new Error("Failed to fetch Pokémon data. Please try again.");
+  }
+
+  return await response.json();
+}
+
+/**
+ * Fetch Pokémon species data
+ */
+async function fetchPokemonSpecies(url) {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch species data");
+  }
+
+  return await response.json();
+}
+
+function displayPokemon(pokemon, species) {
+  const card = document.createElement("div");
+  card.className = "pokemon-card";
+
+  const description =
+    species.flavor_text_entries
+      .find((entry) => entry.language.name === "en")
+      ?.flavor_text.replace(/\f/g, " ") || "No description available.";
+
+  const favorited =
+    typeof isFavorite === "function" ? isFavorite(pokemon.id) : false;
+
+  card.innerHTML = `
+    <div class="pokemon-header">
+      <img src="${
+        pokemon.sprites.other["official-artwork"].front_default ||
+        pokemon.sprites.front_default
+      }" 
+           alt="${pokemon.name}" 
+           class="pokemon-image">
+      <div class="pokemon-name">${pokemon.name}</div>
+      <div class="pokemon-id">#${String(pokemon.id).padStart(3, "0")}</div>
+    </div>
+    
+    <div class="pokemon-types">
+      ${pokemon.types
+        .map(
+          (t) =>
+            `<span class="type-badge type-${t.type.name}">${t.type.name}</span>`
+        )
+        .join("")}
+    </div>
+    
+    <p style="color: #666; line-height: 1.6; margin: 20px 0;">${description}</p>
+    
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Height</div>
+        <div class="info-value">${(pokemon.height / 10).toFixed(1)} m</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Weight</div>
+        <div class="info-value">${(pokemon.weight / 10).toFixed(1)} kg</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Base Experience</div>
+        <div class="info-value">${pokemon.base_experience}</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Habitat</div>
+        <div class="info-value">${species.habitat?.name || "Unknown"}</div>
+      </div>
+    </div>
+    
+    <div class="abilities">
+      <h4>Abilities</h4>
+      <div class="ability-list">
+        ${pokemon.abilities
+          .map(
+            (a) =>
+              `<span class="ability-badge">${a.ability.name.replace(
+                "-",
+                " "
+              )}</span>`
+          )
+          .join("")}
+      </div>
+    </div>
+    
+    <div class="pokemon-stats">
+      <h3>Base Stats</h3>
+      ${pokemon.stats
+        .map(
+          (stat) => `
+        <div class="stat-item">
+          <span class="stat-name">${stat.stat.name.replace("-", " ")}</span>
+          <span class="stat-value">${stat.base_stat}</span>
+        </div>
+      `
+        )
+        .join("")}
+    </div>
+    
+    <button class="favorite-btn ${favorited ? "active" : ""}" 
+            onclick="typeof toggleFavorite === 'function' && toggleFavorite(${
+              pokemon.id
+            }, '${pokemon.name}', '${pokemon.sprites.front_default}')">
+      ${favorited ? "❤️ Remove from Favorites" : "🤍 Add to Favorites"}
+    </button>
+  `;
+
+  pokemonDisplay.appendChild(card);
+}
+
+// UI HELPER FUNCTIONS
+function showError(message) {
+  errorMessage.textContent = message;
+  errorMessage.classList.add("show");
+
+  setTimeout(() => {
+    errorMessage.classList.remove("show");
+  }, 5000);
+}
+
+function hideError() {
+  errorMessage.classList.remove("show");
+}
+
+function showLoading(show) {
+  if (show) {
+    loading.classList.add("show");
+  } else {
+    loading.classList.remove("show");
+  }
+
+  searchBtn.disabled = show;
+  randomBtn.disabled = show;
+}
+
+// PUBLIC API FOR OTHER MODULES
+
+function triggerSearch(pokemonName) {
+  pokemonInput.value = pokemonName;
+  handleSearch();
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
