@@ -1,80 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Pokémon Explorer</title>
     <link rel="stylesheet" href="./styles/style.css" />
     <!--<script src="./scripts/pokemon.js" defer></script>-->
     <script src="./scripts/search.js" defer></script>
-  </head>
-  <body>
+    <script src="./scripts/favorite.js" defer></script>
+</head>
+
+<body>
     <!-- Navigation -->
     <nav class="navbar">
-      <h1>🎮 Pokémon Explorer</h1>
-      <ul class="nav-links">
-        <li><a href="#search-section"> Search </a></li>
-        <li>
-          <a href="#favorites-section" onclick="scrollToFavorites()">
-            Favorites
-          </a>
-        </li>
-      </ul>
+        <h1><a href="index.html"> 🎮 Pokémon Explorer </a></h1>
+        <ul class="nav-links">
+            <li><a href="#search-section"> Search </a></li>
+            <li>
+                <a href="#favorites-section" onclick="scrollToFavorites()">
+                    Favorites
+                </a>
+            </li>
+        </ul>
     </nav>
 
     <!-- Main Content -->
     <main>
-      <!-- Search Section -->
-      <section id="search-section" class="search-section">
-        <h2>Discover Pokémon</h2>
-        <div class="search-form">
-          <input type="text" id="pokemonInput" placeholder="Enter Pokémon name or ID (e.g., pikachu, 25)"autocomplete="off"/>
-          <div class="search-btn-group">
-            <button id="searchBtn">Search</button>
-            <button id="randomBtn" onclick="getRandomPokemon()">Random Pokémon</button>
-          </div>
+        <!-- Search Section -->
+        <section id="search-section" class="search-section">
+            <h2>Discover Pokémon</h2>
+            <div class="search-form">
+                <input type="text" id="pokemonInput" placeholder="Enter Pokémon name or ID (e.g., pikachu, 25)"
+                    autocomplete="off" />
+                <div class="search-btn-group">
+                    <button id="searchBtn">Search</button>
+                    <button id="randomBtn" onclick="getRandomPokemon()">Random Pokémon</button>
+                </div>
+            </div>
+            <ul id="suggestions"></ul>
+            <div class="error-message" id="errorMessage"></div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 20px; color: white; font-weight: 600">
+                Loading Pokémon data...
+            </p>
         </div>
-        <ul id="suggestions"></ul>
-        <div class="error-message" id="errorMessage"></div>
-      </section>
 
-      <!-- Loading Spinner -->
-      <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <p style="margin-top: 20px; color: white; font-weight: 600">
-          Loading Pokémon data...
-        </p>
-      </div>
+        <!-- Pokemon Display -->
 
-      <!-- Pokemon Display -->
-        
-      <div id="pokemon-display" class="pokemon-container hidden">
-        <h2 id="pokemon-name"></h2>
-        <img id="pokemon-image" alt="Pokemon" />
-      </div>
+        <div id="pokemon-display" class="pokemon-container hidden">
+            <h2 id="pokemon-name"></h2>
+            <img id="pokemon-image" alt="Pokemon" />
+        </div>
 
-      <!-- Evolution Chain -->
-      <div id="evolution-display" class="evolution-section hidden"></div>
+        <!-- Evolution Chain -->
+        <div id="evolution-display" class="evolution-section hidden"></div>
 
-      <!-- Favorites Section -->
-      <section id="favorites-section" class="favorites-section hidden">
-        <h2>⭐ My Favorite Pokémon</h2>
-        <div id="favorites-grid" class="favorites-grid"></div>
-      </section>
+        <!-- Favorites Section -->
+        <section id="favorites-section" class="favorites-section hidden">
+            <h2>⭐ My Favorite Pokémon</h2>
+            <div id="favorites-grid" class="favorites-grid"></div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-      <div class="footer-content">
-        <p>&copy; 2025 Pokémon Explorer | Data from PokéAPI</p>
-        <div class="footer-links">
-          <a href="https://pokeapi.co/" target="_blank"
-            >PokéAPI Documentation</a
-          >
-          <a href="#search-section">Back to Top</a>
-          <a href="https://github.com" target="_blank">GitHub Repository</a>
+        <div class="footer-content">
+            <p>&copy; 2025 Pokémon Explorer | Data from PokéAPI</p>
+            <div class="footer-links">
+                <a href="https://pokeapi.co/" target="_blank"> PokéAPI Documentation </a>
+                <a href="#search-section"> Back to Top </a>
+                <a href="https://github.com" target="_blank"> GitHub Repository </a>
+            </div>
         </div>
-      </div>
     </footer>
-  </body>
+</body>
+
 </html>
