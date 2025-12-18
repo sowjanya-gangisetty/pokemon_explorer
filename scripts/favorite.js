@@ -102,11 +102,13 @@ function loadFavorites() {
 function createFavoriteCard(fav) {
   const card = document.createElement("div");
   card.className = "favorite-card";
+  const favImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${fav.id}.png`;
+
 
   card.innerHTML = `
-    <img src="${fav.sprite}" alt="${fav.name}">
+    <img src="${favImageUrl}" alt="${fav.name}">
     <div class="favorite-card-name">${fav.name}</div>
-    <div>
+    <div class="favorite-card-id">
       #${String(fav.id).padStart(3, "0")}
     </div>
     <button class="remove-favorite" onclick="removeFavorite(${fav.id})">

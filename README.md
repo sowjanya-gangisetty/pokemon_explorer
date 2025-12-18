@@ -2,6 +2,55 @@ Pokémon Explorer is a *single-page web application* built with *HTML, CSS, and 
 
 All application logic, styling, and structure are contained in *one HTML file*, making it easy to run, understand, and modify.
 
+The project was developed as a **team collaboration**, with the application logic divided into two major functional parts:
+
+- **Search & Pokémon Details**
+- **Evolution Chain & Favorites System**
+
+---
+
+## 👥 Team Members & Contributions
+
+### 👩‍💻 Anuhya
+
+**Role:** Search & Pokémon Information Module
+
+Anuhya was responsible for implementing the **search functionality and Pokémon data display**, including:
+
+- 🔍 Pokémon search by **name or ID**
+- 🎲 Random Pokémon generator
+- ✨ Autocomplete search suggestions
+- 🌐 API integration with PokéAPI
+- 📊 Display of Pokémon details:
+- Name, ID, and official artwork
+- Types with dynamic styling
+- Description (flavor text)
+- Height, weight, base experience, habitat
+- Abilities
+- Base stats
+- ⏳ Loading spinner and error handling
+- 🧠 Fetching and managing Pokémon & species data
+
+---
+
+### 👩‍💻 Sowjanya
+
+**Role:** Evolution Chain & Favorites Module
+
+Sowjnya handled the **evolution logic and favorites management**, including:
+
+- 🔄 Evolution chain implementation:
+- Fetching evolution chain data
+- Extracting and displaying evolution stages
+- Clickable evolution cards for navigation
+- ⭐ Favorites system:
+- Add/remove Pokémon from favorites
+- Persistent storage using `localStorage`
+- Favorites grid display
+- Remove favorites functionality
+- 🔁 Navigation between favorites and search results
+- 💾 State persistence across page reloads
+
 ---
 
 ## 📌 Overview
