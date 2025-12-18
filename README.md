@@ -2,6 +2,12 @@ Pokémon Explorer is a *single-page web application* built with *HTML, CSS, and 
 
 All application logic, styling, and structure are contained in *one HTML file*, making it easy to run, understand, and modify.
 
+** Live Demo: **
+
+GitHub Link : https://github.com/sowjanya-gangisetty/pokemon_explorer.git
+
+Netlify Live Link :  pokemonexplorerproject.netlify.app
+
 The project was developed as a **team collaboration**, with the application logic divided into two major functional parts:
 
 - **Search & Pokémon Details**
