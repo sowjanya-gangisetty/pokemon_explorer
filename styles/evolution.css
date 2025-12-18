@@ -1,0 +1,81 @@
+.evolution-section {
+  background: white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+  animation: fadeIn 0.5s ease 0.2s both;
+}
+
+.evolution-section h3 {
+  color: #1e3c72;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.evolution-chain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.evolution-item {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+}
+
+.evolution-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(30, 60, 114, 0.3);
+}
+
+.evolution-arrow {
+  font-size: 2rem;
+  color: #1e3c72;
+}
+
+.evolution-img {
+  width: 100px;
+  height: 100px;
+}
+
+.evolution-name {
+  font-weight: 700;
+  color: #1e3c72;
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .evolution-section {
+    padding: 15px;
+  }
+
+  .evolution-chain {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .evolution-item {
+    min-width: 120px;
+    width: 100%;
+    padding: 12px;
+  }
+
+  .evolution-arrow {
+    font-size: 1.2rem;
+  }
+
+  .evolution-img {
+    width: 70px;
+    height: 70px;
+  }
+}
